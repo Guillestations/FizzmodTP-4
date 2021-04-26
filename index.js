@@ -1,21 +1,33 @@
 const express = require('express');
-
 const app = express();
 
-const PORT =  process.env.PORT || 3000;
+require('dotenv').config();
+
+const PORT =  process.env.PORT || 3001;
+
+/**CONEXION A BASES DE DATOS */
+const mongoose = require('mongoose');
+
+
+const uri = `mongodb+srv://${process.env.USER}:${process.env.PASSWORD}@trabajos-fizzmod.pxwwr.mongodb.net/${process.env.DBNAME}?retryWrites=true&w=majority`;
+// mongoose.connect('mongodb+srv://Guille_21:avkTRlTjSyB8LRq4@trabajos-fizzmod.pxwwr.mongodb.net/Fizzmod?retryWrites=true&w=majority',
+//     {useNewUrlParser: true, useUnifiedTopology: true})
+//     .then(() => console.log('Base de datos conectada'))
+//     .catch(e => console.log(e))
+
+mongoose.connect( uri, {useNewUrlParser: true, useUnifiedTopology: true})
+.then(() => console.log('Base de datos conectada'))
+.catch(e => console.log(e))
+
+
 /**Motor de plantilla */
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views')
 
 app.use(express.static(__dirname + "/public"))
 
-app.get('/', (req, res) =>{
-    res.render("index", { titulo : "Mi titulo dinamico"})
-})
-
-app.get('/servicios', (req, res) =>{
-    res.render("servicios", { tituloServicios : "Mensaje dinamico de servicios"})
-})
+app.use('/', require('./router/Rutas'));
+app.use('/productos', require('./router/Poductos'));
 
 /**Redirecciono a Pagina de error 404 siempre y cuando no encuentre una ruta configurada */
 app.use((req, res, next)=> {
