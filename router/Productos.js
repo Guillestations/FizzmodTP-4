@@ -21,4 +21,17 @@ router.get('/', async (req, res) =>{
     
 })
 
+router.post('/', async (req, res) =>{
+    const body = req.body
+    console.log(body)
+    try {
+        const newProducto= new Productos(body)
+        await newProducto.save()
+        res.redirect('/productos')
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+
 module.exports = router;
