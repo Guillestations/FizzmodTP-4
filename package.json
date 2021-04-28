@@ -19,7 +19,6 @@
     "ejs": "^3.1.6",
     "express": "^4.17.1",
     "express-handlebars": "^5.3.0",
-    "handlebars": "^4.7.7",
     "mongoose": "^5.12.5",
     "nodemailer": "^4.7.0"
   }
