@@ -20,10 +20,10 @@
                 <a class="nav-link" aria-current="page" href="/">Inicio</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/productos">Productos</a>
+                <a class="nav-link" href="/productos">Lista Productos</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link active" href="email.html">Email</a>
+                <a class="nav-link active" href="/set-correo">Email</a>
               </li>
             </ul>
            
@@ -31,15 +31,14 @@
         </div>
     </nav>
     <div class="container mt-3 mb-5 my-2" style="justify-content: center;border: solid 2px rgba(151, 141, 238, 0.74); margin: 10px;border-radius: 10px; display: block; background: rgba(151, 141, 238, 0.74);">
-    <h1 class="display-center" style="text-align: center;color: #fff; padding: 10px;">Configure su casilla de Email</h1>
-
-        <form action="/correo" method="POST">
-            <div class="form-group">
-                <label for="" style="color: #fff;">Ingrese su email:</label>
-                <input class="form-control" type="email" name="email" id="email" required>
-            </div>
-            <button class="btn btn-danger mb-3">Enviar</button>
-        </form>
+      <h1 class="display-center" style="text-align: center;color: #fff; padding: 10px;">Configure su casilla de Email</h1>
+      <form action="/set-correo" method="POST">
+        <div class="form-group">
+          <label for="" style="color: #fff;">Ingrese su email:</label>
+          <input class="form-control" type="email" name="email" id="email" required>
+        </div>
+          <button class="btn btn-danger mb-3">Enviar</button>
+      </form>
     </div>
     <footer>
         <div class="container-expand-lg bg-dark m-2">
